@@ -18,6 +18,12 @@ public class KCanvasView extends GLSurfaceView {
         init();
     }
 
+    @Override
+    public void onPause() {
+        KCanvasJni.destroy();
+        super.onPause();
+    }
+
     private void init() {
         setEGLConfigChooser(8,8,8,0,16,0);
         setEGLContextClientVersion(3);

@@ -3,13 +3,7 @@
 //
 
 #include "quad-render.h"
-#include <math.h>
-#include <time.h>
-#include "shader.h"
 
-
-#define STR(s) #s
-#define STRV(s) STR(s)
 #define POS_ATTRIB 0
 #define COLOR_ATTRIB 1
 #define SCALEROT_ATTRIB 2
