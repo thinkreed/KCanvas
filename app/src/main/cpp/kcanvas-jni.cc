@@ -1,7 +1,6 @@
 //
 // Created by thinkreed on 2018/4/7.
 //
-#include <linux/time.h>
 #include "cube-render.h"
 
 uint64_t lastFrameNs;

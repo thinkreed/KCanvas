@@ -9,8 +9,8 @@
 #include <jni.h>
 #include <stdlib.h>
 #include <string.h>
-#include <cmath>
-#include <ctime>
+#include <math.h>
+#include <time.h>
 #define STR(s) #s
 #define STRV(s) STR(s)
 #define LOG_TAG "kcanvas-jni"
