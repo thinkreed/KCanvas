@@ -16,7 +16,7 @@
 #define LOG_TAG "kcanvas-jni"
 #define ALOGE(...) __android_log_print(ANDROID_LOG_ERROR, LOG_TAG, __VA_ARGS__)
 
-GLuint createProgram(const char *vtxSrc, const char *fragSrc);
+GLuint createProgram(const char *vertex_file_path, const char *fragment_file_path);
 bool checkGlError(const char *funcName);
 
 #endif //KCANVAS_SHADER_H

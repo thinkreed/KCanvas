@@ -59,7 +59,7 @@ Renderer::~Renderer() {
   glDeleteProgram(mProgram);
 }
 bool Renderer::init() {
-  mProgram = createProgram(VERTEX_SHADER, FRAGMENT_SHADER);
+  mProgram = createProgram("/sdcard/Documents/quad.vshader", "/sdcard/Documents/quad.fshader");
   if (!mProgram)
     return false;
   glGenBuffers(VB_COUNT, mVB);

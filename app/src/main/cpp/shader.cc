@@ -4,6 +4,8 @@
 
 #include "shader.h"
 #include <stdlib.h>
+#include <fstream>
+#include <sstream>
 
 bool checkGlError(const char *funcName) {
   GLint err = glGetError();
@@ -43,15 +45,42 @@ GLuint createShader(GLenum shaderType, const char *src) {
   return shader;
 }
 
-GLuint createProgram(const char *vtxSrc, const char *fragSrc) {
+GLuint createProgram(const char *vertex_file_path, const char *fragment_file_path) {
   GLuint vtxShader = 0;
   GLuint fragShader = 0;
   GLuint program = 0;
   GLint linked = GL_FALSE;
-  vtxShader = createShader(GL_VERTEX_SHADER, vtxSrc);
+
+  // Read the Vertex Shader code from the file
+  std::string VertexShaderCode;
+  std::ifstream VertexShaderStream(vertex_file_path, std::ios::in);
+  if(VertexShaderStream.is_open()){
+    std::stringstream sstr;
+    sstr << VertexShaderStream.rdbuf();
+    VertexShaderCode = sstr.str();
+    VertexShaderStream.close();
+  }else{
+    ALOGE("Impossible to open %s. Are you in the right directory ? Don't forget to read the FAQ !\n", vertex_file_path);
+    return 0;
+  }
+
+  // Read the Fragment Shader code from the file
+  std::string FragmentShaderCode;
+  std::ifstream FragmentShaderStream(fragment_file_path, std::ios::in);
+  if(FragmentShaderStream.is_open()){
+    std::stringstream sstr;
+    sstr << FragmentShaderStream.rdbuf();
+    FragmentShaderCode = sstr.str();
+    FragmentShaderStream.close();
+  }
+
+  char const * VertexSourcePointer = VertexShaderCode.c_str();
+  char const * FragmentSourcePointer = FragmentShaderCode.c_str();
+
+  vtxShader = createShader(GL_VERTEX_SHADER, VertexSourcePointer);
   if (!vtxShader)
     goto exit;
-  fragShader = createShader(GL_FRAGMENT_SHADER, fragSrc);
+  fragShader = createShader(GL_FRAGMENT_SHADER, FragmentSourcePointer);
   if (!fragShader)
     goto exit;
   program = glCreateProgram();
