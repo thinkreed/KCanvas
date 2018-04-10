@@ -11,6 +11,8 @@
 #include <string.h>
 #include <math.h>
 #include <time.h>
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 #define STR(s) #s
 #define STRV(s) STR(s)
 #define LOG_TAG "kcanvas-jni"

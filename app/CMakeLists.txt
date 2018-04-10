@@ -33,6 +33,7 @@ add_library( # Sets the name of the library.
              src/main/cpp/kcanvas-jni.cc
              src/main/cpp/quad-render.cc
              src/main/cpp/cube-render.cc
+             src/main/cpp/matrix-render.cc
              src/main/cpp/shader.cc)
 
 # Searches for a specified prebuilt library and stores the path as a
